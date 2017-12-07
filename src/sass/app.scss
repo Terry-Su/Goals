@@ -1,0 +1,68 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+#TargetsManagement {
+	max-width: 768px;
+	margin: 0 auto;
+
+	#caveat {
+		position: fixed; top: 1%; left: 1%; z-index: 9;
+		width: 98%; 
+		text-align: center;
+	}
+  #AddBtn {
+		// width: 50px; height: 50px;
+		position: fixed; bottom: 10%; right: 10%;
+	}
+
+	.ListItem {
+		margin: 5px;
+		word-break: break-all;
+
+		.Label {
+			color: #975b33;
+		}
+	}
+
+	// Dropdown: cover semantic.css
+	.ui.selection.dropdown {
+		.menu{
+			max-height: ((2.5 * 8.01428571) + rem)!important; // default: 8.01428571rem
+		}
+	}	
+
+	#TopbarDropdown .icon{
+		opacity: 0;
+	}
+}
+
+
+// .ListItemModal {
+// 	/* { font color */
+//   #deleteBtn {
+//     color: #db2828!important;
+//   }
+//   #completeBtn {
+//     color: #21ba45!important;
+//   }
+//   #topBtn {
+//     color: #f2711c!important;
+//   }
+//   #moreBtn {
+//     color: #1b1c1d!important;
+//   }
+// 	#cancelBtn {
+// 		color: #767676!important;
+// 	}
+//   /* } font color */
+// }
+
+
+/* { common */
+.center{
+	text-align: center!important;
+}
+/* } common */

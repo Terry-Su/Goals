@@ -1,0 +1,12 @@
+{
+  "name": "Goals",
+  "short_name": "Goals",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "favicon.icon",
+      "sizes": "256x256",
+      "type": "image/ico"
+    }
+  ]
+}
