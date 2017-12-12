@@ -3,7 +3,8 @@ import React from 'react'
 import {
   Button,
   Dropdown,
-  Flag
+  Flag,
+  Input,
 } from 'semantic-ui-react'
 
 import Lang from '../util/lang/index'
@@ -14,7 +15,26 @@ const _activateBtn = (type, listType) => {
   return type === listType
 }
 
-const Topbar = ({ listType, onDayClick, onWeekClick, onMonthClick, onProjectClick, onYearClick, onLongClick, onNextDayClick, onNextWeekClick, onNextMonthClick, onNextYearClick, onBufferrClick, onIdeaClick, onTimelineClick, onRecycleClick, onImportClick, onExportClick, onCNClick, onUSClick }) => {
+const Topbar = ({ listType, 
+  onDayClick, 
+  onWeekClick, 
+  onMonthClick, 
+  onProjectClick, 
+  onYearClick, 
+  onLongClick, 
+  onNextDayClick, 
+  onNextWeekClick, 
+  onNextMonthClick, 
+  onNextYearClick, 
+  onBufferrClick, 
+  onIdeaClick, 
+  onTimelineClick, 
+  onRecycleClick, 
+  onImportDataInputChange,  
+  onExportClick, 
+  onCNClick, 
+  onUSClick,
+}) => {
 
 
   return (
@@ -40,7 +60,22 @@ const Topbar = ({ listType, onDayClick, onWeekClick, onMonthClick, onProjectClic
             <Dropdown.Item text={Lang.HOME_MENU_BUTTON_NEXTYEAR} active={_activateBtn(10, listType)} onClick={onNextYearClick} />
             <Dropdown.Item active text={Lang.HOME_MENU_BUTTON_TIMELINE} onClick={onTimelineClick} />
             <Dropdown.Item active text={Lang.HOME_MENU_BUTTON_RECYCLE} onClick={onRecycleClick} />
-            <Dropdown.Item active text={Lang.HOME_MENU_BUTTON_IMPORT_DATA} onClick={onImportClick} />
+            
+            <Dropdown.Item active style={{
+              postion: 'relative'
+            }}>
+              { Lang.HOME_MENU_BUTTON_IMPORT_DATA }
+              <Input type="file" onChange={ onImportDataInputChange } style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                opacity: '0'
+              }}/>
+            </Dropdown.Item>
+
             <Dropdown.Item active text={Lang.HOME_MENU_BUTTON_EXPORT_DATA} onClick={onExportClick} />
             <Dropdown.Item className='center'>
               <Flag name='cn' onClick={onCNClick} />
@@ -67,7 +102,7 @@ Topbar.propTypes = {
   onNextYearClick: React.PropTypes.func,
   onTimelineClick: React.PropTypes.func,
   onRecycleClick: React.PropTypes.func,
-  onImportClick: React.PropTypes.func,
+  onImportDataInputChange: React.PropTypes.func,
   onExportClick: React.PropTypes.func,
   onCNClick: React.PropTypes.func,
   onUSClick: React.PropTypes.func

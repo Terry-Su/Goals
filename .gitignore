@@ -2,7 +2,7 @@
 bundle.js
 
 #.map
-.map
+*.map
 
 # Logs
 logs

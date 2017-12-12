@@ -89,48 +89,51 @@ const mapDispatchToProps = dispatch => {
       dispatch(modifyInnerState_route(5))
       dispatch(modifyInnerState_homeRoute(5))
     },
-    onImportClick() {
-      // show confirm: "It's adviced to backup current data before importing any data!"
-      confirmModal.show({
-        text: Lang.IMPORT_DATA_ALERT,
-        modalConfirmed() {
-          
-          // show prompt: "Please paste data string to import"
-          promptModal.show({
-            text: Lang.IMPORT_DATA_PASTE_NOTION,
-            modalConfirmed(inputValue) {
-              // data to generate
-              let data = null
+    onImportDataInputChange( event ) {
+      try {
+        const reader = new FileReader()
+        const onReaderLoad = ( event ) => {
+          const dataStr = event.target.result
+          let data = null
 
-              // check pasted data
-              const check = dataStr => {
-                let result = false
-                try {
-                  data = JSON.parse(dataStr)
-                  result = typeof data === 'object' && data.targets != null
-                }
-                catch (e) {
-
-                }
-                return result
-              }
-              const checkResult = check(inputValue)
-
-              // data is okay
-              if (checkResult) {
-                // set localstorage
-                setLocalStore(data)
-                // refresh
-                location.href = location.href
-              }
-              // data is wrong
-              if (!checkResult) {
-                showCaveat(Lang.CAVEAT_IMPORT_DATA_FORMAT_WRONG)
-              }
+          const check = dataStr => {
+            let result = false
+            try {
+              data = JSON.parse(dataStr)
+              result = typeof data === 'object' && data.targets != null
             }
-          })
+            catch (e) {
+
+            }
+            return result
+          }
+
+          const checkResult = check( dataStr )
+
+          // data is okay
+          if (checkResult) {
+            // set localstorage
+            setLocalStore(data)
+            // refresh
+            location.href = location.href
+          }
+          // data is wrong
+          if (!checkResult) {
+            showCaveat(Lang.CAVEAT_IMPORT_DATA_FORMAT_WRONG)
+          }
         }
-      })
+  
+        reader.onload = onReaderLoad
+        reader.readAsText( event.target.files[ 0 ] )
+
+      } 
+      catch( e ) {
+        console.log( e )
+        // data is wrong
+        if (!checkResult) {
+          showCaveat(Lang.CAVEAT_IMPORT_DATA_FORMAT_WRONG)
+        }
+      }
     },
     onExportClick() {
       const { email } = ReduxStore.getState().innerState
