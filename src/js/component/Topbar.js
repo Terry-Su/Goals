@@ -62,7 +62,9 @@ const Topbar = ({ listType,
             <Dropdown.Item active text={Lang.HOME_MENU_BUTTON_RECYCLE} onClick={onRecycleClick} />
             
             <Dropdown.Item active style={{
-              postion: 'relative'
+              postion: 'relative',
+              background: 'none',
+              cursor: 'pointer',  
             }}>
               { Lang.HOME_MENU_BUTTON_IMPORT_DATA }
               <Input type="file" onChange={ onImportDataInputChange } style={{
@@ -72,7 +74,8 @@ const Topbar = ({ listType,
                 width: '100%',
                 height: '100%',
                 border: 'none',
-                opacity: '0'
+                opacity: '0',
+                cursor: 'pointer',              
               }}/>
             </Dropdown.Item>
 
