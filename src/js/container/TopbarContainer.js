@@ -8,6 +8,8 @@ import { setLocalStore, getLocalStore, setLanguage } from '../store/localStore'
 import storeName from '../store/initialState/storeName'
 import { showCaveat } from '../util/index'
 import { confirmModal, promptModal } from '../util/modal'
+import lock from '../util/lock'
+import unlock from '../util/unlock'
 import Lang from '../util/lang/index'
 import download from '../util/download'
 import isHybrid from '../util/isHybrid'
@@ -93,7 +95,7 @@ const mapDispatchToProps = dispatch => {
       try {
         const reader = new FileReader()
         const onReaderLoad = ( event ) => {
-          const dataStr = event.target.result
+          const dataStr = unlock( event.target.result )
           let data = null
 
           const check = dataStr => {
@@ -144,7 +146,7 @@ const mapDispatchToProps = dispatch => {
         modalConfirmed(confirmedEmail) {
           /* download  */
           const data = getLocalStore()
-          const dataStr = JSON.stringify(data)
+          const dataStr = lock( JSON.stringify(data) )
           const fileName = `${moment().format("YYYY_MMMM_Do_dddd_h_mm_ss_a")}_By_${storeName}.json`
           
           !isHybrid() && download( dataStr, fileName )
