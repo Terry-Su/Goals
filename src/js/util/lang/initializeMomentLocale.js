@@ -14,7 +14,7 @@ const initializeMomentLocale = () => {
 	}
 	// en
 	if (currentLanguage === 'en') {
-		moment.locale('en')
+		moment.locale('zh-cn')
 	}
 }
 

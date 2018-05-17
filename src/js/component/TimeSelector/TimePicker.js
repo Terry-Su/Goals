@@ -103,11 +103,11 @@ class Timepicker extends React.Component {
       locale = zhCn
     }
     if (currentLanguage != 'zh') {
-      minDate.locale('en').utcOffset(8)
-      maxDate.locale('en').utcOffset(8)
-      defaultDate.locale('en').utcOffset(8)
+      minDate.locale('zh-cn').utcOffset(8)
+      maxDate.locale('zh-cn').utcOffset(8)
+      defaultDate.locale('zh-cn').utcOffset(8)
 
-      locale = enUS
+      locale = zhCn
     }
 
     const format = function (date) {
