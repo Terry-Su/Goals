@@ -35,6 +35,14 @@ function setTargetRepeatingStateFalse(id) {
   }))
 }
 
+function setTargetUnCompleted( id ) {
+  ReduxStore.dispatch(modifyTarget({
+    id,
+    key: 'isCompleted',
+    value: false
+  }))
+}
+
 
 /**
  * update the start date, end date, minimum date and maximum date of target by target's type

@@ -1,8 +1,5 @@
-#bundle
-bundle.js
-
-#.map
-*.map
+# build
+public/js
 
 # Logs
 logs
