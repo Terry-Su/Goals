@@ -11,6 +11,7 @@ const BUILD = process.env.BUILD
 const app = express()
 
 module.exports = {
+  mode: BUILD ? 'production': 'development',
   entry: './src/entry.js',
   output: {
     path: path.resolve(__dirname, 'public/js'),
