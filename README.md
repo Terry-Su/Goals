@@ -1,4 +1,4 @@
-> This app has been built for a long time, that is to say, the technology used may be a little out of dated. However, it doesn't matter if we use it.
+> This app has been built for a long time, that is to say, the technology used may be a little out of dated. However, it doesn't matter its use.
 
 # Introduction
 **Goals** helps us manage our short and long goals easily.  
